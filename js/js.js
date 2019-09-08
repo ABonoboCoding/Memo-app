@@ -25,7 +25,7 @@ for (var index = 0; index < localStorage.length; index++) {
 
 function deleteClicked(evt) {
   var key = evt.target.dataset.key;
-  localStorage.removeItem(key);
+  localStorage.removeItem('key');
 
 }
 
