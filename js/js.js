@@ -1,15 +1,9 @@
-/**
-* Load data from storage and show in the table
-* @param {Event} evt Click event
-* @return {undefined} No return value
-**/
 function loadDataClicked(evt) {
   evt.preventDefault();
   document
     .querySelector('.outputTable')
     .innerHTML = '';
 
-  // Write code here
 for (var index = 0; index < localStorage.length; index++) {
   var key = localStorage.key(index);
   var value = localStorage.getItem(key);
@@ -25,12 +19,6 @@ function deleteClicked(evt) {
 
 }
 
-/**
-* Add a new row to the output table
-* @param {string} key The key value to show
-* @param {string} value The value to show
-* @return {Element} The table row object
-**/
 function showRow(key, value) {
   var keyCell = document.createElement('td');
   keyCell.innerHTML = key;
