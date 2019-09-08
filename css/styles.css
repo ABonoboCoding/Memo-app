@@ -1,0 +1,20 @@
+* {
+  box-sizing: border-box;
+}
+
+.mainData {
+  display: flex;
+}
+
+.inputRow {
+  width: 100%;
+}
+
+.inputRow label {
+  display: inline-block;
+  width: 25%;
+}
+
+.inputRow input {
+  width: 70%;
+}
