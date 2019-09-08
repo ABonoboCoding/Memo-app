@@ -1,8 +1,19 @@
+function saveDataClicked(evt) {
+  evt.preventDefault();
+
+var keyInput = document.querySelector('#keyInput');
+
+var valueInput = document.querySelector('#valueInput');
+
+var key = keyInput.value;
+var value = valueInput.value;
+
+localStorage.setItem(key, value);
+};
+
 function loadDataClicked(evt) {
   evt.preventDefault();
-  document
-    .querySelector('.outputTable')
-    .innerHTML = '';
+  document.querySelector('.outputTable').innerHTML = '';
 
 for (var index = 0; index < localStorage.length; index++) {
   var key = localStorage.key(index);
