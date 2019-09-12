@@ -13,7 +13,7 @@
             "type": "image/png"
         }
     ],
-    "start_url": ".",
+    "start_url": "https://abonobocoding.github.io/Memo-app/",
     "display": "standalone",
     "background_color": "#FFF",
     "theme_color": "#123557"
