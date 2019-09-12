@@ -3,12 +3,12 @@
     "short_name": "Memo App",
     "icons": [
         {
-            "src": "../pic/index.png",
+            "src": "index.png",
             "sizes": "128x128",
             "type": "image/png"
         },
         {
-            "src": "../pic/index.png",
+            "src": "index.png",
             "sizes": "512x512",
             "type": "image/png"
         }
