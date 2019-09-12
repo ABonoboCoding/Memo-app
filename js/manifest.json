@@ -1,0 +1,20 @@
+{
+    "name": "Memo app",
+    "short_name": "Memo App",
+    "icons": [
+        {
+            "src": "../pic/index.png",
+            "sizes": "128x128",
+            "type": "image/png"
+        },
+        {
+            "src": "../pic/index.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ],
+    "start_url": ".",
+    "display": "standalone",
+    "background_color": "#FFF",
+    "theme_color": "#123557"
+}
