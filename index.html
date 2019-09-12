@@ -8,22 +8,19 @@
 </head>
 
 <body>
-  <div class="mainData">
-    <div class="inputForm">
-      <div class="inputRow">
-        <label for="keyInput">Key</label>
-        <input type="text" name="key" id="keyInput" />
+    <div class="mainData">
+      <div class="inputForm">
+        <div class="inputRow">
+          <input type="text" name="key" id="keyInput" placeholder="Title"></input>
+        </div>
+        <div class="inputRow">
+          <textarea style="height:100px;width:200px;font-size:14pt;" type="text" name="value" id="valueInput" placeholder="Enter text here"></textarea>
+        </div>
+        <button id="saveBtn">Save memo</button>
       </div>
-      <div class="inputRow">
-        <label for="valueInput">Value</label>
-        <input type="text" name="value" id="valueInput" />
-      </div>
-      <button id="saveBtn">Save memo</button>
-      <button id="loadBtn">Load Data</button>
+      <table class="outputTable">
+      </table>
     </div>
-    <table class="outputTable">
-    </table>
-  </div>
 </body>
 
 <script type="text/javascript" src="js/js.js"></script>
