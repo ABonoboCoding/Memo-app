@@ -58,7 +58,7 @@ for (var index = 0; index < localStorage.length; index++) {
 
 function showCard(key, value) {
 
-  var col = document.createElement('td')
+  var col = document.createElement('tr')
 
   var card = document.createElement('div');
   card.className = "hpcard";
