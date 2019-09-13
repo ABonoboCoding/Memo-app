@@ -44,6 +44,7 @@
   padding: 4px 16px;
   text-align: center;
   background-color: lightyellow;
+  overflow-wrap: break-word;
 }
 
 .hpbutton {
@@ -69,4 +70,8 @@
 .hpbuttonGreen:hover {
   background-color: green;
   color: white;
+}
+
+.center{
+  margin: auto;
 }

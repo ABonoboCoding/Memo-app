@@ -3,19 +3,23 @@ document.querySelector('.outputTable').innerHTML = '';
 for (var index = 0; index < localStorage.length; index++) {
   var key = localStorage.key(index);
   var value = localStorage.getItem(key);
-  console.log(`${key}: ${value}`);
   showCard(key, value);
 }
 
 function saveDataClicked(evt) {
   evt.preventDefault();
 
+  var now = new Date();
+
+  var dateNow = `${now.getDate()}-${now.getMonth()+1}-${now.getYear()-100}`;
+
   var keyInput = document.querySelector('#keyInput');
 
   var valueInput = document.querySelector('#valueInput');
 
   var key = keyInput.value;
-  var value = valueInput.value;
+
+  var value = valueInput.value + '<br/>' + '<br/>' + 'Date created: ' + dateNow;
 
   localStorage.setItem(key, value);
   document.querySelector('.outputTable').innerHTML = '';
@@ -23,7 +27,6 @@ function saveDataClicked(evt) {
   for (var index = 0; index < localStorage.length; index++) {
     var key = localStorage.key(index);
     var value = localStorage.getItem(key);
-    console.log(`${key}: ${value}`);
     showCard(key, value);
   }
 };
