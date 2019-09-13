@@ -4,6 +4,7 @@
 
 .mainData {
   display: flex;
+  text-align: center;
 }
 
 .inputRow {
