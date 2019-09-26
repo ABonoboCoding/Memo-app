@@ -1,17 +1,26 @@
-document.querySelector('.outputTable').innerHTML = '';
+function startUp() {
+  if (localStorage.length >= 1) {
 
-for (var index = 0; index < localStorage.length; index++) {
-  var key = localStorage.key(index);
-  var value = localStorage.getItem(key);
-  showCard(key, value);
+  document.querySelector('.outputTable').innerHTML = '';
+
+  for (var index = 0; index < localStorage.length; index++) {
+    var key = localStorage.key(index);
+    var value = localStorage.getItem(key);
+    showCard(key, JSON.parse(value));
+  }
 }
+}
+
+
 
 function saveDataClicked(evt) {
   evt.preventDefault();
 
+  var memo = {};
+
   var now = new Date();
 
-  var dateNow = `${now.getDate()}-${now.getMonth()+1}-${now.getYear()-100}`;
+  memo.dateNow = `${now.getDate()}-${now.getMonth()+1}-${now.getYear()-100}`;
 
   var keyInput = document.querySelector('#keyInput');
 
@@ -19,15 +28,15 @@ function saveDataClicked(evt) {
 
   var key = keyInput.value;
 
-  var value = valueInput.value + '<br/>' + '<br/>' + 'Date created: ' + dateNow;
+  memo.value = valueInput.value;
 
-  localStorage.setItem(key, value);
+  localStorage.setItem(key, JSON.stringify(memo));
   document.querySelector('.outputTable').innerHTML = '';
 
   for (var index = 0; index < localStorage.length; index++) {
     var key = localStorage.key(index);
     var value = localStorage.getItem(key);
-    showCard(key, value);
+    showCard(key, JSON.parse(value));
   }
 };
 
@@ -54,7 +63,7 @@ for (var index = 0; index < localStorage.length; index++) {
   var key = localStorage.key(index);
   var value = localStorage.getItem(key);
   console.log(`${key}: ${value}`);
-  showCard(key, value);
+  showCard(key, JSON.parse(value));
 }
 
 }
@@ -94,7 +103,7 @@ function showCard(key, value) {
 
 document.getElementById('saveBtn').addEventListener('click', saveDataClicked);
 
-
+/*
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', function() {
     navigator.serviceWorker.register('sw.js').then(function(registration) {
@@ -106,3 +115,4 @@ if ('serviceWorker' in navigator) {
     });
   });
 }
+*/
