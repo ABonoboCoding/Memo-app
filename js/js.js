@@ -5,8 +5,8 @@ function startUp() {
 
   for (var index = 0; index < localStorage.length; index++) {
     var key = localStorage.key(index);
-    var value = localStorage.getItem(key);
-    showCard(key, JSON.parse(value));
+    var value = JSON.parse(localStorage.getItem(key));
+    showCard(key, value);
   }
 }
 }
@@ -16,11 +16,9 @@ function startUp() {
 function saveDataClicked(evt) {
   evt.preventDefault();
 
-  var memo = {};
-
   var now = new Date();
 
-  memo.dateNow = `${now.getDate()}-${now.getMonth()+1}-${now.getYear()-100}`;
+  var dateNow = `${now.getDate()}-${now.getMonth()+1}-${now.getYear()-100}`;
 
   var keyInput = document.querySelector('#keyInput');
 
@@ -28,15 +26,19 @@ function saveDataClicked(evt) {
 
   var key = keyInput.value;
 
-  memo.value = valueInput.value;
+  var info = valueInput.value;
+
+  var memo = [info, dateNow
+  ];
 
   localStorage.setItem(key, JSON.stringify(memo));
   document.querySelector('.outputTable').innerHTML = '';
 
   for (var index = 0; index < localStorage.length; index++) {
     var key = localStorage.key(index);
-    var value = localStorage.getItem(key);
-    showCard(key, JSON.parse(value));
+    var value = JSON.parse(localStorage.getItem(key));
+    showCard(key, value);
+    console.log(JSON.parse(value))
   }
 };
 
@@ -61,9 +63,9 @@ function deleteClicked(evt) {
 
 for (var index = 0; index < localStorage.length; index++) {
   var key = localStorage.key(index);
-  var value = localStorage.getItem(key);
+  var value = JSON.parse(localStorage.getItem(key));
   console.log(`${key}: ${value}`);
-  showCard(key, JSON.parse(value));
+  showCard(key, value);
 }
 
 }
@@ -81,7 +83,10 @@ function showCard(key, value) {
 
   var cardContent = document.createElement('div');
   cardContent.className = "hpcontainer";
-  cardContent.innerHTML = value;
+  cardContent.innerHTML = value[0];
+
+  var cardDate = document.createElement('p');
+  cardDate.innerHTML = value[1];
 
   var buttonCenter = document.createElement('center');
 
@@ -92,6 +97,7 @@ function showCard(key, value) {
   deleteButton.addEventListener('click', deleteClicked);
 
   buttonCenter.appendChild(deleteButton)
+  cardContent.appendChild(cardDate);
   card.appendChild(cardHeading);
   card.appendChild(cardContent);
   card.appendChild(buttonCenter)
