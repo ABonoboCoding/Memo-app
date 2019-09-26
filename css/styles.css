@@ -36,7 +36,6 @@
   max-width: 350px; /*change minimum size of card */
   max-height: 350px;
   min-width: 200px;
-  min-height: 300px;
   background-color: lightblue;
 }
 

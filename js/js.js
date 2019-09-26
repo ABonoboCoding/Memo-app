@@ -1,10 +1,17 @@
-document.querySelector('.outputTable').innerHTML = '';
+function startUp() {
+  if (localStorage.length >= 1) {
 
-for (var index = 0; index < localStorage.length; index++) {
-  var key = localStorage.key(index);
-  var value = localStorage.getItem(key);
-  showCard(key, value);
+  document.querySelector('.outputTable').innerHTML = '';
+
+  for (var index = 0; index < localStorage.length; index++) {
+    var key = localStorage.key(index);
+    var value = JSON.parse(localStorage.getItem(key));
+    showCard(key, value);
+  }
 }
+}
+
+
 
 function saveDataClicked(evt) {
   evt.preventDefault();
@@ -19,14 +26,17 @@ function saveDataClicked(evt) {
 
   var key = keyInput.value;
 
-  var value = valueInput.value + '<br/>' + '<br/>' + 'Date created: ' + dateNow;
+  var info = valueInput.value;
 
-  localStorage.setItem(key, value);
+  var memo = [info, dateNow
+  ];
+
+  localStorage.setItem(key, JSON.stringify(memo));
   document.querySelector('.outputTable').innerHTML = '';
 
   for (var index = 0; index < localStorage.length; index++) {
     var key = localStorage.key(index);
-    var value = localStorage.getItem(key);
+    var value = JSON.parse(localStorage.getItem(key));
     showCard(key, value);
   }
 };
@@ -52,7 +62,7 @@ function deleteClicked(evt) {
 
 for (var index = 0; index < localStorage.length; index++) {
   var key = localStorage.key(index);
-  var value = localStorage.getItem(key);
+  var value = JSON.parse(localStorage.getItem(key));
   console.log(`${key}: ${value}`);
   showCard(key, value);
 }
@@ -66,13 +76,17 @@ function showCard(key, value) {
   var card = document.createElement('div');
   card.className = "hpcard";
 
-  var cardHeading = document.createElement('h4');
+  var cardHeading = document.createElement('h3');
   cardHeading.className = "txt_center";
   cardHeading.innerHTML = key;
 
   var cardContent = document.createElement('div');
   cardContent.className = "hpcontainer";
-  cardContent.innerHTML = value;
+  cardContent.innerHTML = value[0];
+
+  var datePara = document.createElement('p');
+  var cardDate = document.createElement('b');
+  cardDate.innerHTML = value[1];
 
   var buttonCenter = document.createElement('center');
 
@@ -83,6 +97,9 @@ function showCard(key, value) {
   deleteButton.addEventListener('click', deleteClicked);
 
   buttonCenter.appendChild(deleteButton)
+
+  datePara.appendChild(cardDate)
+  cardContent.appendChild(datePara);
   card.appendChild(cardHeading);
   card.appendChild(cardContent);
   card.appendChild(buttonCenter)
@@ -94,7 +111,7 @@ function showCard(key, value) {
 
 document.getElementById('saveBtn').addEventListener('click', saveDataClicked);
 
-
+/*
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', function() {
     navigator.serviceWorker.register('sw.js').then(function(registration) {
@@ -106,3 +123,4 @@ if ('serviceWorker' in navigator) {
     });
   });
 }
+*/
