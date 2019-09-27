@@ -1,16 +1,20 @@
-function startUp() {
-  if (localStorage.length >= 1) {
+if (localStorage.length >= 1) {
 
   document.querySelector('.outputTable').innerHTML = '';
+
+  const memos = [];
 
   for (var index = 0; index < localStorage.length; index++) {
     var key = localStorage.key(index);
     var value = JSON.parse(localStorage.getItem(key));
-    showCard(key, value);
+    console.log(index, key, value)
+    memos.push({title: key, body: value});
   }
-}
-}
 
+  memos.sort((a, b) => a.title < b.title).forEach((item) => {
+      showCard(item.title, item.body)
+    });
+};
 
 
 function saveDataClicked(evt) {
@@ -18,27 +22,37 @@ function saveDataClicked(evt) {
 
   var now = new Date();
 
+  var key = `${now}`;
+
   var dateNow = `${now.getDate()}-${now.getMonth()+1}-${now.getYear()-100}`;
 
-  var keyInput = document.querySelector('#keyInput');
+  var titleInput = document.querySelector('#titleInput');
 
   var valueInput = document.querySelector('#valueInput');
 
-  var key = keyInput.value;
+  var title = titleInput.value;
 
   var info = valueInput.value;
 
-  var memo = [info, dateNow
+  var memo = [info, dateNow, title
   ];
 
   localStorage.setItem(key, JSON.stringify(memo));
+
   document.querySelector('.outputTable').innerHTML = '';
+
+  const memos = [];
 
   for (var index = 0; index < localStorage.length; index++) {
     var key = localStorage.key(index);
     var value = JSON.parse(localStorage.getItem(key));
-    showCard(key, value);
+    console.log(index, key, value)
+    memos.push({title: key, body: value});
   }
+
+  memos.sort((a, b) => a.title < b.title).forEach((item) => {
+      showCard(item.title, item.body)
+    });
 };
 
 /* seperate function
@@ -46,11 +60,18 @@ function loadDataClicked(evt) {
   evt.preventDefault();
   document.querySelector('.outputTable').innerHTML = '';
 
-for (var index = 0; index < localStorage.length; index++) {
-  var key = localStorage.key(index);
-  var value = localStorage.getItem(key);
-  console.log(`${key}: ${value}`);
-  showCard(key, value);
+  const memos = [];
+
+  for (var index = 0; index < localStorage.length; index++) {
+    var key = localStorage.key(index);
+    var value = JSON.parse(localStorage.getItem(key));
+    console.log(index, key, value)
+    memos.push({title: key, body: value});
+  }
+
+  memos.sort((a, b) => a.title < b.title).forEach((item) => {
+      showCard(item.title, item.body)
+    });
 }
 }
 */
@@ -60,11 +81,17 @@ function deleteClicked(evt) {
   evt.preventDefault();
   document.querySelector('.outputTable').innerHTML = '';
 
+  const memos = [];
+
 for (var index = 0; index < localStorage.length; index++) {
   var key = localStorage.key(index);
   var value = JSON.parse(localStorage.getItem(key));
-  console.log(`${key}: ${value}`);
-  showCard(key, value);
+  console.log(index, key, value)
+  memos.push({title: key, body: value});
+
+  memos.sort((a, b) => a.title < b.title).forEach((item) => {
+      showCard(item.title, item.body)
+    });
 }
 
 }
@@ -78,7 +105,7 @@ function showCard(key, value) {
 
   var cardHeading = document.createElement('h3');
   cardHeading.className = "txt_center";
-  cardHeading.innerHTML = key;
+  cardHeading.innerHTML = value[2];
 
   var cardContent = document.createElement('div');
   cardContent.className = "hpcontainer";
