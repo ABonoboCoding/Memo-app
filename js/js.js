@@ -53,6 +53,14 @@ function saveDataClicked(evt) {
   memos.sort((a, b) => a.title < b.title).forEach((item) => {
       showCard(item.title, item.body)
     });
+
+    var titleInput = document.querySelector('#titleInput');
+
+    var valueInput = document.querySelector('#valueInput');
+
+    titleInput.value = "";
+
+    valueInput.value = "";
 };
 
 /* seperate function
