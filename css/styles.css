@@ -2,13 +2,6 @@
   box-sizing: border-box;
 }
 
-body {
-  background-image: url('pic/background.jpg');
-  background-repeat:no-repeat;
-  background-position: center;
-  background-size:cover;
-}
-
 .mainData {
   display: flex;
   text-align: center;
