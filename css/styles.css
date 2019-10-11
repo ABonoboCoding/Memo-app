@@ -121,7 +121,6 @@ button[type=submit]:hover {
 }
 
 .button:hover {
-  background-color: red;
 }
 
 .overlay {
@@ -163,7 +162,6 @@ button[type=submit]:hover {
 }
 
 .popup .close:hover {
-  color: red;
 }
 .popup .content {
   max-height: 30%;
