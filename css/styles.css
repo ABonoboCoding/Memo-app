@@ -170,7 +170,7 @@ button[type=submit]:hover {
   overflow: auto;
 }
 
-@media screen and (max-width: 400px){
+@media screen and (max-width: 100px){
   .box{
     width: 70%;
   }
