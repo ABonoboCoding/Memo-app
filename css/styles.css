@@ -30,13 +30,15 @@
   transition: 0.3s;
   width: 100%; /*change size of card directly*/
   height: 100%;
-  border-radius: 5px;
+  border-radius: 15px;
   border-style: solid;
   border-color: lightblue;
   max-width: 350px; /*change minimum size of card */
   max-height: 350px;
   min-width: 200px;
   background-color: lightblue;
+  padding: 5px;
+  margin: 10px;
 }
 
 .hpcontainer {
@@ -116,4 +118,63 @@ button[type=submit] {
 
 button[type=submit]:hover {
   background-color: #45a049;
+}
+
+.button:hover {
+  background-color: red;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+  transition: opacity 500ms;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.overlay:target {
+  visibility: visible;
+  opacity: 1;
+}
+
+.popup {
+  margin: 70px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 5px;
+  width: 30%;
+  position: relative;
+  transition: all 5s ease-in-out;
+}
+
+.popup .close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  transition: all 200ms;
+  font-size: 30px;
+  font-weight: bold;
+  text-decoration: none;
+  color: black;
+}
+
+.popup .close:hover {
+  color: red;
+}
+.popup .content {
+  max-height: 30%;
+  overflow: auto;
+}
+
+@media screen and (max-width: 400px){
+  .box{
+    width: 70%;
+  }
+  .popup{
+    width: 70%;
+  }
 }
