@@ -62,7 +62,7 @@ function saveDataClicked(evt) {
     titleInput.value = "";
 
     valueInput.value = "";
-    
+
   document.getElementById("firstButton").style.display = "none";
 };
 
@@ -105,7 +105,11 @@ for (var index = 0; index < localStorage.length; index++) {
     });
 }
 
-}
+if (localStorage.length < 1) {
+  document.getElementById("firstButton").style.display = "block";
+  };
+
+};
 
 function showCard(key, value) {
 
