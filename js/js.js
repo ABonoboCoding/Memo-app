@@ -14,6 +14,7 @@ if (localStorage.length >= 1) {
   memos.sort((a, b) => a.title < b.title).forEach((item) => {
       showCard(item.title, item.body)
     });
+  document.getElementById("firstButton").style.display = "none";
 };
 
 
@@ -61,6 +62,8 @@ function saveDataClicked(evt) {
     titleInput.value = "";
 
     valueInput.value = "";
+
+  document.getElementById("firstButton").style.display = "none";
 };
 
 /* seperate function
@@ -102,7 +105,11 @@ for (var index = 0; index < localStorage.length; index++) {
     });
 }
 
-}
+if (localStorage.length < 1) {
+  document.getElementById("firstButton").style.display = "block";
+  };
+
+};
 
 function showCard(key, value) {
 
