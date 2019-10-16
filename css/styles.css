@@ -63,10 +63,25 @@
 }
 
 .createFirstButton {
-  background-color: green;
+  background-color: lightgreen;
   display: inline-flex;
   border: none;
   color: white;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  max-width: 350px;
+}
+
+.createFirstButton:hover {
+  background-color: lightgreen;
+  display: inline-flex;
+  border: none;
+  color: black;
   padding: 16px 32px;
   text-align: center;
   text-decoration: none;
