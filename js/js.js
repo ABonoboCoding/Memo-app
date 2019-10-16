@@ -14,6 +14,7 @@ if (localStorage.length >= 1) {
   memos.sort((a, b) => a.title < b.title).forEach((item) => {
       showCard(item.title, item.body)
     });
+
 };
 
 
@@ -61,6 +62,8 @@ function saveDataClicked(evt) {
     titleInput.value = "";
 
     valueInput.value = "";
+
+
 };
 
 /* seperate function
