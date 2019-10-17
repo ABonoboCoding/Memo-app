@@ -188,7 +188,28 @@ button[type=submit]:hover {
   transition: all 0s ease-in-out;
 }
 
+.promptpopup {
+  margin: 20% auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 5px;
+  width: auto;
+  position: relative;
+  transition: all 0s ease-in-out;
+}
+
 .popup .close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  transition: all 200ms;
+  font-size: 30px;
+  font-weight: bold;
+  text-decoration: none;
+  color: black;
+}
+
+.promptpopup .close {
   position: absolute;
   top: 20px;
   right: 20px;
@@ -201,7 +222,16 @@ button[type=submit]:hover {
 
 .popup .close:hover {
 }
+
+.promptpopup .close:hover {
+}
+
 .popup .content {
+  max-height: 30%;
+  overflow: auto;
+}
+
+.promptpopup .content {
   max-height: 30%;
   overflow: auto;
 }
@@ -211,6 +241,15 @@ button[type=submit]:hover {
     width: 70%;
   }
   .popup{
+    width: 70%;
+  }
+}
+
+@media screen and (max-width: 100px){
+  .box{
+    width: 70%;
+  }
+  .promptpopup{
     width: 70%;
   }
 }

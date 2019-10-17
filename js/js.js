@@ -44,9 +44,9 @@ function saveDataClicked(evt) {
   var info = valueInput.value;
 
   if (title == null || title == '') {
-    window.location.href = '#popup3';
+    window.location.href = '#promptpopup3';
   } else if (info == null || info == '') {
-    window.location.href = '#popup4';
+    window.location.href = '#promptpopup4';
   } else {
     var memo = [info, dateNow, title, lastModify, firstCreated
     ];
@@ -165,9 +165,9 @@ function saveEdited(evt) {
   var info = valueInput.value;
 
   if (title == null || title == ''){
-    window.location.href = '#popup5';
+    window.location.href = '#promptpopup5';
   } else if (info == null || info == ''){
-    window.location.href = '#popup6';
+    window.location.href = '#promptpopup6';
   } else {
 
     var memo = [info, dateNow, title, lastModify, firstCreated
