@@ -130,22 +130,29 @@ function showCard(key, value) {
   var cardDate = document.createElement('b');
   cardDate.innerHTML = value[1];
 
-  var buttonCenter = document.createElement('center');
+  /*var buttonCenter = document.createElement('center');*/
 
   var deleteButton = document.createElement('button');
   deleteButton.className = 'hpbutton';
-  deleteButton.innerHTML = 'Delete memo';
+  deleteButton.innerHTML = 'Delete';
   deleteButton.dataset.key = key;
   deleteButton.addEventListener('click', deleteClicked);
 
-  buttonCenter.appendChild(deleteButton)
+  var editButton = document.createElement('button');
+  editButton.className = 'hpbutton';
+  editButton.innerHTML = 'Edit';
+  editButton.dataset.key = key;
+  editButton.addEventListener('click', deleteClicked);
+
+  /*buttonCenter.appendChild(deleteButton)*/
 
   datePara.appendChild(cardDate)
   cardContent.appendChild(datePara);
   card.appendChild(cardHeading);
   card.appendChild(cardContent);
-  card.appendChild(buttonCenter)
-  col.appendChild(card)
+  card.appendChild(deleteButton);
+  card.appendChild(editButton);
+  col.appendChild(card);
 
   document.querySelector('.outputTable').appendChild(col);
   return col;
