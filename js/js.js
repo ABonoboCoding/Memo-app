@@ -11,7 +11,7 @@ if (localStorage.length >= 1) {
     memos.push({title: key, body: value});
   }
 
-  memos.sort((a, b) => a.body[3] > b.body[3]).forEach((item) => {
+  memos.sort((a, b) => a.body[3] < b.body[3]).forEach((item) => {
       showCard(item.title, item.body)
     });
   document.getElementById("firstButton").style.display = "none";
@@ -59,7 +59,7 @@ function saveDataClicked(evt) {
     memos.push({title: key, body: value, modified: value[3]});
   }
 
-  memos.sort((a, b) => a.body[3] > b.body[3]).forEach((item) => {
+  memos.sort((a, b) => a.body[3] < b.body[3]).forEach((item) => {
       showCard(item.title, item.body)
     });
 
@@ -110,7 +110,7 @@ function deleteClicked(evt) {
     console.log(index, key, value)
     memos.push({title: key, body: value});
 
-    memos.sort((a, b) => a.body[3] > b.body[3]).forEach((item) => {
+    memos.sort((a, b) => a.body[3] < b.body[3]).forEach((item) => {
         showCard(item.title, item.body)
       });
   }
@@ -173,7 +173,7 @@ function saveEdited(evt) {
     memos.push({title: key, body: value});
   }
 
-  memos.sort((a, b) => a.body[3] > b.body[3]).forEach((item) => {
+  memos.sort((a, b) => a.body[3] < b.body[3]).forEach((item) => {
       showCard(item.title, item.body)
     });
 
