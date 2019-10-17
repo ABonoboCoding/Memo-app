@@ -17,6 +17,10 @@ if (localStorage.length >= 1) {
   document.getElementById("firstButton").style.display = "none";
 };
 
+if (localStorage.length < 1) {
+  document.getElementById("firstButton").style.display = "block";
+  };
+
 
 function saveDataClicked(evt) {
   evt.preventDefault();
@@ -25,7 +29,7 @@ function saveDataClicked(evt) {
 
   var key = `${now}`;
 
-  var dateNow = `${now.getDate()}-${now.getMonth()+1}-${now.getYear()-100}`;
+  var dateNow = `Last modified: ${now.getDate()}-${now.getMonth()+1}-${now.getYear()-100}`;
 
   var titleInput = document.querySelector('#titleInput');
 
@@ -63,7 +67,7 @@ function saveDataClicked(evt) {
 
     valueInput.value = "";
 
-  document.getElementById("firstButton").style.display = "none";
+  window.location.href = '';
 };
 
 /* seperate function
@@ -108,25 +112,69 @@ for (var index = 0; index < localStorage.length; index++) {
 if (localStorage.length < 1) {
   document.getElementById("firstButton").style.display = "block";
   };
-
 };
 
 function editClicked(evt) {
   var key = evt.target.dataset.key;
   var value = JSON.parse(localStorage.getItem(key));
   window.location.href = '#popup2';
-  var title = document.querySelector("#titleInput");
-  var content = document.querySelector("#valueInput");
+  var title = document.querySelector("#titleInput2");
+  var content = document.querySelector("#valueInput2");
   title.value = value[2];
   content.value = value[0];
 
-  var buttonArea = document.querySelector('#keySave');
-
-  var saveEditButton = document.createElement('button');
-  saveEditButton
+  var saveEditButton = document.querySelector("#saveBtn2");
+  saveEditButton.dataset.key = key;
 };
 
+function saveEdited(evt) {
+  evt.preventDefault();
 
+  var key = evt.target.dataset.key;
+
+  var titleInput = document.querySelector('#titleInput2');
+
+  var valueInput = document.querySelector('#valueInput2');
+
+  var title = titleInput.value;
+
+  var info = valueInput.value;
+
+  var now = new Date();
+
+  var dateNow = `Last modified: ${now.getDate()}-${now.getMonth()+1}-${now.getYear()-100}`;
+
+  var memo = [info, dateNow, title
+  ];
+
+  localStorage.setItem(key, JSON.stringify(memo));
+
+  document.querySelector('.outputTable').innerHTML = '';
+
+  const memos = [];
+
+  for (var index = 0; index < localStorage.length; index++) {
+    var key = localStorage.key(index);
+    var value = JSON.parse(localStorage.getItem(key));
+    console.log(index, key, value)
+    memos.push({title: key, body: value});
+  }
+
+  memos.sort((a, b) => a.title < b.title).forEach((item) => {
+      showCard(item.title, item.body)
+    });
+
+    var titleInput = document.querySelector('#titleInput');
+
+    var valueInput = document.querySelector('#valueInput');
+
+    titleInput.value = "";
+
+    valueInput.value = "";
+
+  window.location.href = '';
+
+};
 
 function showCard(key, value) {
 
@@ -176,6 +224,7 @@ function showCard(key, value) {
 }
 
 document.getElementById('saveBtn').addEventListener('click', saveDataClicked);
+document.getElementById('saveBtn2').addEventListener('click', saveEdited);
 
 /*
 if ('serviceWorker' in navigator) {
