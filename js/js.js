@@ -43,37 +43,44 @@ function saveDataClicked(evt) {
 
   var info = valueInput.value;
 
-  var memo = [info, dateNow, title, lastModify, firstCreated
-  ];
+  if (title == null || title == '') {
+    window.location.href = '#popup3';
+  } else if (info == null || info == '') {
+    window.location.href = '#popup4';
+  } else {
+    var memo = [info, dateNow, title, lastModify, firstCreated
+    ];
 
-  localStorage.setItem(key, JSON.stringify(memo));
+    localStorage.setItem(key, JSON.stringify(memo));
 
-  document.querySelector('.outputTable').innerHTML = '';
+    document.querySelector('.outputTable').innerHTML = '';
 
-  const memos = [];
+    const memos = [];
 
-  for (var index = 0; index < localStorage.length; index++) {
-    var key = localStorage.key(index);
-    var value = JSON.parse(localStorage.getItem(key));
-    console.log(index, key, value)
-    memos.push({title: key, body: value, modified: value[3]});
+    for (var index = 0; index < localStorage.length; index++) {
+      var key = localStorage.key(index);
+      var value = JSON.parse(localStorage.getItem(key));
+      console.log(index, key, value)
+      memos.push({title: key, body: value, modified: value[3]});
+    }
+
+    memos.sort((a, b) => a.body[3] < b.body[3]).forEach((item) => {
+        showCard(item.title, item.body)
+      });
+
+    console.log(memos);
+
+      var titleInput = document.querySelector('#titleInput');
+
+      var valueInput = document.querySelector('#valueInput');
+
+      titleInput.value = "";
+
+      valueInput.value = "";
+
+    window.location.href = '';
   }
 
-  memos.sort((a, b) => a.body[3] < b.body[3]).forEach((item) => {
-      showCard(item.title, item.body)
-    });
-
-  console.log(memos);
-
-    var titleInput = document.querySelector('#titleInput');
-
-    var valueInput = document.querySelector('#valueInput');
-
-    titleInput.value = "";
-
-    valueInput.value = "";
-
-  window.location.href = '';
 };
 
 /* seperate function
@@ -147,48 +154,56 @@ function saveEdited(evt) {
 
   var valueInput = document.querySelector('#valueInput2');
 
-  var title = titleInput.value;
-
-  var info = valueInput.value;
-
   var now = new Date();
 
   var lastModify = `${now}`;
 
   var dateNow = `Last modified: ${now.getDate()}/${now.getMonth()+1}/${now.getYear()-100} ${now.getHours()}:${now.getMinutes()}`;
 
-  var memo = [info, dateNow, title, lastModify, firstCreated
-  ];
+  var title = titleInput.value;
 
-  localStorage.setItem(key, JSON.stringify(memo));
+  var info = valueInput.value;
 
-  document.querySelector('.outputTable').innerHTML = '';
+  if (title == null || title == ''){
+    window.location.href = '#popup5';
+  } else if (info == null || info == ''){
+    window.location.href = '#popup6';
+  } else {
 
-  const memos = [];
+    var memo = [info, dateNow, title, lastModify, firstCreated
+    ];
 
-  for (var index = 0; index < localStorage.length; index++) {
-    var key = localStorage.key(index);
-    var value = JSON.parse(localStorage.getItem(key));
-    console.log(index, key, value)
-    memos.push({title: key, body: value});
+    localStorage.setItem(key, JSON.stringify(memo));
+
+    document.querySelector('.outputTable').innerHTML = '';
+
+    const memos = [];
+
+    for (var index = 0; index < localStorage.length; index++) {
+      var key = localStorage.key(index);
+      var value = JSON.parse(localStorage.getItem(key));
+      console.log(index, key, value)
+      memos.push({title: key, body: value});
+    }
+
+    memos.sort((a, b) => a.body[3] < b.body[3]).forEach((item) => {
+        showCard(item.title, item.body)
+      });
+
+    console.log(memos);
+
+      var titleInput = document.querySelector('#titleInput');
+
+      var valueInput = document.querySelector('#valueInput');
+
+      titleInput.value = "";
+
+      valueInput.value = "";
+
+    window.location.href = '';
+
   }
-
-  memos.sort((a, b) => a.body[3] < b.body[3]).forEach((item) => {
-      showCard(item.title, item.body)
-    });
-
-  console.log(memos);
-
-    var titleInput = document.querySelector('#titleInput');
-
-    var valueInput = document.querySelector('#valueInput');
-
-    titleInput.value = "";
-
-    valueInput.value = "";
-
-  window.location.href = '';
-
+  
 };
 
 function showCard(key, value) {
