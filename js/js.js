@@ -118,7 +118,7 @@ function showCard(key, value) {
   var card = document.createElement('div');
   card.className = "hpcard";
 
-  var cardHeading = document.createElement('h3');
+  var cardHeading = document.createElement('h2');
   cardHeading.className = "txt_center";
   cardHeading.innerHTML = value[2];
 
