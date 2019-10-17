@@ -29,9 +29,11 @@ function saveDataClicked(evt) {
 
   var key = `${now}`;
 
+  var firstCreated = `Date Created: ${now.getDate()}/${now.getMonth()+1}/${now.getYear()-100} ${now.getHours()}:${now.getMinutes()}`;
+
   var lastModify = `${now}`;
 
-  var dateNow = `Last modified: ${now.getDate()}-${now.getMonth()+1}-${now.getYear()-100}`;
+  var dateNow = `Last modified: ${now.getDate()}/${now.getMonth()+1}/${now.getYear()-100} ${now.getHours()}:${now.getMinutes()}`;
 
   var titleInput = document.querySelector('#titleInput');
 
@@ -41,7 +43,7 @@ function saveDataClicked(evt) {
 
   var info = valueInput.value;
 
-  var memo = [info, dateNow, title, lastModify
+  var memo = [info, dateNow, title, lastModify, firstCreated
   ];
 
   localStorage.setItem(key, JSON.stringify(memo));
@@ -129,12 +131,15 @@ function editClicked(evt) {
 
   var saveEditButton = document.querySelector("#saveBtn2");
   saveEditButton.dataset.key = key;
+  saveEditButton.dataset.firstCreated = value[4];
 };
 
 function saveEdited(evt) {
   evt.preventDefault();
 
   var key = evt.target.dataset.key;
+
+  var firstCreated = evt.target.dataset.firstCreated;
 
   var titleInput = document.querySelector('#titleInput2');
 
@@ -148,9 +153,9 @@ function saveEdited(evt) {
 
   var lastModify = `${now}`;
 
-  var dateNow = `Last modified: ${now.getDate()}-${now.getMonth()+1}-${now.getYear()-100}`;
+  var dateNow = `Last modified: ${now.getDate()}/${now.getMonth()+1}/${now.getYear()-100} ${now.getHours()}:${now.getMinutes()}`;
 
-  var memo = [info, dateNow, title, lastModify
+  var memo = [info, dateNow, title, lastModify, firstCreated
   ];
 
   localStorage.setItem(key, JSON.stringify(memo));
@@ -199,6 +204,10 @@ function showCard(key, value) {
   cardContent.className = "hpcontainer";
   cardContent.innerHTML = value[0];
 
+  var dateCreatedPara = document.createElement('p');
+  var dateCreated = document.createElement('b');
+  dateCreated.innerHTML = value[4];
+
   var datePara = document.createElement('p');
   var cardDate = document.createElement('b');
   cardDate.innerHTML = value[1];
@@ -219,8 +228,12 @@ function showCard(key, value) {
 
   /*buttonCenter.appendChild(deleteButton)*/
 
-  datePara.appendChild(cardDate)
+  datePara.appendChild(cardDate);
+  dateCreatedPara.appendChild(dateCreated);
+
+  cardContent.appendChild(dateCreatedPara);
   cardContent.appendChild(datePara);
+
   card.appendChild(cardHeading);
   card.appendChild(cardContent);
   card.appendChild(deleteButton);
