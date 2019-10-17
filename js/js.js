@@ -11,7 +11,7 @@ if (localStorage.length >= 1) {
     memos.push({title: key, body: value});
   }
 
-  memos.sort((a, b) => a.title < b.title).forEach((item) => {
+  memos.sort((a, b) => a.body[3] < b.body[3]).forEach((item) => {
       showCard(item.title, item.body)
     });
   document.getElementById("firstButton").style.display = "none";
@@ -29,6 +29,8 @@ function saveDataClicked(evt) {
 
   var key = `${now}`;
 
+  var lastModify = `${now}`;
+
   var dateNow = `Last modified: ${now.getDate()}-${now.getMonth()+1}-${now.getYear()-100}`;
 
   var titleInput = document.querySelector('#titleInput');
@@ -39,7 +41,7 @@ function saveDataClicked(evt) {
 
   var info = valueInput.value;
 
-  var memo = [info, dateNow, title
+  var memo = [info, dateNow, title, lastModify
   ];
 
   localStorage.setItem(key, JSON.stringify(memo));
@@ -52,12 +54,14 @@ function saveDataClicked(evt) {
     var key = localStorage.key(index);
     var value = JSON.parse(localStorage.getItem(key));
     console.log(index, key, value)
-    memos.push({title: key, body: value});
+    memos.push({title: key, body: value, modified: value[3]});
   }
 
-  memos.sort((a, b) => a.title < b.title).forEach((item) => {
+  memos.sort((a, b) => a.body[3] < b.body[3]).forEach((item) => {
       showCard(item.title, item.body)
     });
+
+  console.log(memos);
 
     var titleInput = document.querySelector('#titleInput');
 
@@ -92,8 +96,8 @@ function loadDataClicked(evt) {
 */
 
 function deleteClicked(evt) {
-  localStorage.removeItem(evt.target.dataset.key);
   evt.preventDefault();
+  localStorage.removeItem(evt.target.dataset.key);
   document.querySelector('.outputTable').innerHTML = '';
 
   const memos = [];
@@ -104,7 +108,7 @@ for (var index = 0; index < localStorage.length; index++) {
   console.log(index, key, value)
   memos.push({title: key, body: value});
 
-  memos.sort((a, b) => a.title < b.title).forEach((item) => {
+  memos.sort((a, b) => a.body[3] < b.body[3]).forEach((item) => {
       showCard(item.title, item.body)
     });
 }
@@ -142,9 +146,11 @@ function saveEdited(evt) {
 
   var now = new Date();
 
+  var lastModify = `${now}`;
+
   var dateNow = `Last modified: ${now.getDate()}-${now.getMonth()+1}-${now.getYear()-100}`;
 
-  var memo = [info, dateNow, title
+  var memo = [info, dateNow, title, lastModify
   ];
 
   localStorage.setItem(key, JSON.stringify(memo));
@@ -160,9 +166,11 @@ function saveEdited(evt) {
     memos.push({title: key, body: value});
   }
 
-  memos.sort((a, b) => a.title < b.title).forEach((item) => {
+  memos.sort((a, b) => a.body[3] < b.body[3]).forEach((item) => {
       showCard(item.title, item.body)
     });
+
+  console.log(memos);
 
     var titleInput = document.querySelector('#titleInput');
 
