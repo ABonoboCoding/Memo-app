@@ -175,7 +175,7 @@ button[type=submit]:hover {
   padding: 20px;
   background: #fff;
   border-radius: 5px;
-  width: 70%;
+  width: auto;
   position: relative;
   transition: all 0s ease-in-out;
 }
