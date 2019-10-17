@@ -24,6 +24,10 @@
   text-align: center;
 }
 
+.largePlus{
+  font-size:1000%;
+}
+
 .addMemoButton {
   position:fixed;
   bottom:10px;
@@ -52,6 +56,7 @@
   padding: 4px 30px;
   text-align: center;
   background-color: lightyellow;
+  font-size:110%;
   overflow-wrap: break-word;
 }
 
@@ -75,14 +80,16 @@
   display: inline-flex;
   border: none;
   color: white;
-  padding: 16px 32px;
+  padding: 16px 24px;
   text-align: center;
   text-decoration: none;
   font-size: 16px;
-  margin: 4px 2px;
+  margin: 20px 2px;
   transition-duration: 0.4s;
   cursor: pointer;
   max-width: 350px;
+  border-radius: 12px;
+  height: 400px;
 }
 
 .createFirstButton:hover {
@@ -97,7 +104,9 @@
   margin: 4px 2px;
   transition-duration: 0.4s;
   cursor: pointer;
+  border-radius: 12px;
   max-width: 350px;
+  height: 400px;
 }
 
 .hpbuttonGreen {
@@ -156,9 +165,6 @@ button[type=submit] {
 
 button[type=submit]:hover {
   background-color: #45a049;
-}
-
-.button:hover {
 }
 
 .overlay {

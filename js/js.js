@@ -29,7 +29,7 @@ function saveDataClicked(evt) {
 
   var key = `${now}`;
 
-  var firstCreated = `Date Created: ${now.getDate()}/${now.getMonth()+1}/${now.getYear()-100} ${now.getHours()}:${now.getMinutes()}`;
+  var firstCreated = `Date created: ${now.getDate()}/${now.getMonth()+1}/${now.getYear()-100} ${now.getHours()}:${now.getMinutes()}`;
 
   var lastModify = `${now}`;
 
