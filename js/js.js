@@ -104,20 +104,22 @@ function deleteClicked(evt) {
 
   const memos = [];
 
-for (var index = 0; index < localStorage.length; index++) {
-  var key = localStorage.key(index);
-  var value = JSON.parse(localStorage.getItem(key));
-  console.log(index, key, value)
-  memos.push({title: key, body: value});
+  for (var index = 0; index < localStorage.length; index++) {
+    var key = localStorage.key(index);
+    var value = JSON.parse(localStorage.getItem(key));
+    console.log(index, key, value)
+    memos.push({title: key, body: value});
 
-  memos.sort((a, b) => a.body[3] < b.body[3]).forEach((item) => {
-      showCard(item.title, item.body)
-    });
-}
+    memos.sort((a, b) => a.body[3] < b.body[3]).forEach((item) => {
+        showCard(item.title, item.body)
+      });
+  }
 
-if (localStorage.length < 1) {
-  document.getElementById("firstButton").style.display = "block";
-  };
+  if (localStorage.length < 1) {
+    document.getElementById("firstButton").style.display = "block";
+    };
+
+  window.location.href = '';
 };
 
 function editClicked(evt) {
