@@ -203,7 +203,7 @@ function saveEdited(evt) {
     window.location.href = '';
 
   }
-  
+
 };
 
 function showCard(key, value) {
