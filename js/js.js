@@ -111,6 +111,23 @@ if (localStorage.length < 1) {
 
 };
 
+function editClicked(evt) {
+  var key = evt.target.dataset.key;
+  var value = JSON.parse(localStorage.getItem(key));
+  window.location.href = '#popup2';
+  var title = document.querySelector("#titleInput");
+  var content = document.querySelector("#valueInput");
+  title.value = value[2];
+  content.value = value[0];
+
+  var buttonArea = document.querySelector('#keySave');
+
+  var saveEditButton = document.createElement('button');
+  saveEditButton
+};
+
+
+
 function showCard(key, value) {
 
   var col = document.createElement('tr')
@@ -142,7 +159,7 @@ function showCard(key, value) {
   editButton.className = 'hpbutton';
   editButton.innerHTML = 'Edit';
   editButton.dataset.key = key;
-  editButton.addEventListener('click', deleteClicked);
+  editButton.addEventListener('click', editClicked);
 
   /*buttonCenter.appendChild(deleteButton)*/
 
