@@ -29,11 +29,11 @@ function saveDataClicked(evt) {
 
   var key = `${now}`;
 
-  var firstCreated = `Date created: ${now.getDate()}/${now.getMonth()+1}/${now.getYear()-100} ${now.getHours()}:${now.getMinutes()}`;
+  var firstCreated = `Date created: ${now.getDate()}/${now.getMonth()+1}/${now.getYear()-100} at ${now.getHours()}:${now.getMinutes()}`;
 
   var lastModify = `${now}`;
 
-  var dateNow = `Last modified: ${now.getDate()}/${now.getMonth()+1}/${now.getYear()-100} ${now.getHours()}:${now.getMinutes()}`;
+  var dateNow = `Last modified: ${now.getDate()}/${now.getMonth()+1}/${now.getYear()-100} at ${now.getHours()}:${now.getMinutes()}`;
 
   var titleInput = document.querySelector('#titleInput');
 
@@ -158,7 +158,7 @@ function saveEdited(evt) {
 
   var lastModify = `${now}`;
 
-  var dateNow = `Last modified: ${now.getDate()}/${now.getMonth()+1}/${now.getYear()-100} ${now.getHours()}:${now.getMinutes()}`;
+  var dateNow = `Last modified: ${now.getDate()}/${now.getMonth()+1}/${now.getYear()-100} at ${now.getHours()}:${now.getMinutes()}`;
 
   var title = titleInput.value;
 
