@@ -43,12 +43,14 @@ function saveDataClicked(evt) {
 
   var info = valueInput.value;
 
+  var importance = "unimportant";
+
   if (title == null || title == '') {
     window.location.href = '#promptpopup3';
   } else if (info == null || info == '') {
     window.location.href = '#promptpopup4';
   } else {
-    var memo = [info, dateNow, title, lastModify, firstCreated
+    var memo = [info, dateNow, title, lastModify, firstCreated, importance
     ];
 
     localStorage.setItem(key, JSON.stringify(memo));
@@ -170,7 +172,7 @@ function saveEdited(evt) {
     window.location.href = '#promptpopup6';
   } else {
 
-    var memo = [info, dateNow, title, lastModify, firstCreated
+    var memo = [info, dateNow, title, lastModify, firstCreated, importance
     ];
 
     localStorage.setItem(key, JSON.stringify(memo));
@@ -203,6 +205,41 @@ function saveEdited(evt) {
     window.location.href = '';
 
   }
+};
+
+function toggleImportance(evt) {
+  var key = evt.target.dataset.key;
+
+  var importance = evt.target.dataset.imp;
+
+  var value = JSON.parse(localStorage.getItem(key));
+
+  var info = value[0];
+
+  var dateNow = value[1];
+
+  var title = value[2];
+
+  var lastModify = value[3];
+
+  var firstCreated = value[4];
+
+  var importance = value[5];
+
+  if (importance == "unimportant") {
+    importance = "important";
+
+    var memo = [info, dateNow, title, lastModify, firstCreated, importance
+    ];
+
+    localStorage.setItem(key, JSON.stringify(memo));
+  } else if (importance == "important") {
+    importance = "unimportant";
+    var memo = [info, dateNow, title, lastModify, firstCreated, importance
+    ];
+
+    localStorage.setItem(key, JSON.stringify(memo));
+  }
 
 };
 
@@ -231,6 +268,16 @@ function showCard(key, value) {
 
   /*var buttonCenter = document.createElement('center');*/
 
+  var importanceArea = document.createElement('p');
+  importanceArea.innerHTML = 'Important';
+
+  var importanceButton = document.createElement('input');
+  importanceButton.type = 'checkbox';
+  importanceButton.name = 'importance';
+  importanceButton.value = 'Important';
+  importanceButton.dataset.key = key;
+  importanceButton.addEventListener('click', toggleImportance);
+
   var deleteButton = document.createElement('button');
   deleteButton.className = 'hpbutton';
   deleteButton.innerHTML = 'Delete';
@@ -241,6 +288,7 @@ function showCard(key, value) {
   editButton.className = 'hpbutton';
   editButton.innerHTML = 'Edit';
   editButton.dataset.key = key;
+  editButton.dataset.imp = value[5];
   editButton.addEventListener('click', editClicked);
 
   /*buttonCenter.appendChild(deleteButton)*/
@@ -251,10 +299,14 @@ function showCard(key, value) {
   cardContent.appendChild(dateCreatedPara);
   cardContent.appendChild(datePara);
 
+  importanceArea.appendChild(importanceButton);
+
   card.appendChild(cardHeading);
+  card.appendChild(importanceArea);
   card.appendChild(cardContent);
   card.appendChild(deleteButton);
   card.appendChild(editButton);
+
   col.appendChild(card);
 
   document.querySelector('.outputTable').appendChild(col);
