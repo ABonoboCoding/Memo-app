@@ -50,15 +50,15 @@ body a{
   border-style: solid;
   border-color: lightblue;
   max-width: 350px; /*change minimum size of card */
-  max-height: 350px;
-  min-width: 200px;
+  max-height: auto;
+  min-width: 175px;
   background-color: lightblue;
   padding: 5px;
-  margin: 10px;
+  margin: 5px;
 }
 
 .hpcontainer {
-  padding: 4px 30px;
+  padding: auto 15px;
   text-align: center;
   background-color: lightyellow;
   font-size:110%;
