@@ -26,6 +26,7 @@
 
 .largePlus{
   font-size:1000%;
+  text-decoration: none;
 }
 
 .addMemoButton {
@@ -33,6 +34,10 @@
   bottom:10px;
   right:10px;
   z-index:999;
+}
+
+body a{
+  text-decoration: none;
 }
 
 .hpcard {
