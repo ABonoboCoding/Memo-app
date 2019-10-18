@@ -49,7 +49,7 @@ body a{
   border-radius: 15px;
   border-style: solid;
   border-color: lightblue;
-  max-width: 350px; /*change minimum size of card */
+  max-width: 275px; /*change minimum size of card */
   max-height: auto;
   min-width: 175px;
   background-color: lightblue;
@@ -58,10 +58,11 @@ body a{
 }
 
 .hpcontainer {
-  padding: auto 15px;
-  text-align: center;
+  padding: 2px 15px;
   background-color: lightyellow;
   font-size:110%;
+  border-radius: 8px;
+  text-align: left;
   overflow-wrap: break-word;
 }
 
@@ -78,6 +79,7 @@ body a{
   transition-duration: 0.4s;
   cursor: pointer;
   width:30%;
+  border-radius: 8px;
 }
 
 .createFirstButton {
