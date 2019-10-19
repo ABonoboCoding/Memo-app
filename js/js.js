@@ -304,7 +304,6 @@ function showCard(key, value) {
   editButton.dataset.imp = value[5];
   editButton.addEventListener('click', editClicked);
 
-  /*buttonCenter.appendChild(deleteButton)*/
 
   datePara.appendChild(cardDate);
   dateCreatedPara.appendChild(dateCreated);
