@@ -15,6 +15,7 @@ if (localStorage.length >= 1) {
       showCard(item.title, item.body)
     });
   document.getElementById("firstButton").style.display = "none";
+
 };
 
 if (localStorage.length < 1) {
@@ -273,9 +274,14 @@ function showCard(key, value) {
 
   var importanceButton = document.createElement('input');
   importanceButton.type = 'checkbox';
-  importanceButton.name = 'importance';
   importanceButton.value = 'Important';
+  importanceButton.id = value[1];
   importanceButton.dataset.key = key;
+  if (value[5] == "important"){
+    importanceButton.checked = true;
+  }else if (value[5] == "unimportant"){
+    importanceButton.checked = false;
+  };
   importanceButton.addEventListener('click', toggleImportance);
 
   var deleteButton = document.createElement('button');
