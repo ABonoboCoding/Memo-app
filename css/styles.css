@@ -36,6 +36,16 @@
   z-index:999;
 }
 
+.importantBGColor{
+  background-color: lightgreen;
+  border-radius: 8px;
+}
+
+.unimportantBGColor{
+  background-color: lightyellow;
+  border-radius: 8px;
+}
+
 body a{
   text-decoration: none;
 }
@@ -55,6 +65,26 @@ body a{
   background-color: lightblue;
   padding: 5px;
   margin: 5px;
+}
+
+.hpHeading {
+  text-align: center;
+  padding: 2px 15px;
+  background-color: lightyellow;
+  font-size:110%;
+  border-radius: 8px;
+  text-align: left;
+  overflow-wrap: break-word;
+}
+
+.hpHeadContainer {
+  padding: 2px 15px;
+  background-color: lightyellow;
+  font-size:110%;
+  border-radius: 8px;
+  text-align: center;
+  overflow-wrap: break-word;
+  font-weight: bold;
 }
 
 .hpcontainer {

@@ -151,6 +151,8 @@ function saveEdited(evt) {
 
   var key = evt.target.dataset.key;
 
+  var value = JSON.parse(localStorage.getItem(key));
+
   var firstCreated = evt.target.dataset.firstCreated;
 
   var titleInput = document.querySelector('#titleInput2');
@@ -166,6 +168,8 @@ function saveEdited(evt) {
   var title = titleInput.value;
 
   var info = valueInput.value;
+
+  importance = value[5];
 
   if (title == null || title == ''){
     window.location.href = '#promptpopup5';
@@ -251,8 +255,8 @@ function showCard(key, value) {
   var card = document.createElement('div');
   card.className = "hpcard";
 
-  var cardHeading = document.createElement('h2');
-  cardHeading.className = "txt_center";
+  var cardHeading = document.createElement('div');
+  cardHeading.className = "hpHeadContainer";
   cardHeading.innerHTML = value[2];
 
   var cardContent = document.createElement('div');
@@ -270,7 +274,6 @@ function showCard(key, value) {
   /*var buttonCenter = document.createElement('center');*/
 
   var importanceArea = document.createElement('p');
-  importanceArea.innerHTML = 'Important';
 
   var importanceButton = document.createElement('input');
   importanceButton.type = 'checkbox';
@@ -278,8 +281,12 @@ function showCard(key, value) {
   importanceButton.id = value[1];
   importanceButton.dataset.key = key;
   if (value[5] == "important"){
+    importanceArea.className = "importantBGColor";
+    importanceArea.innerHTML = "Important!";
     importanceButton.checked = true;
   }else if (value[5] == "unimportant"){
+    importanceArea.className = "unimportantBGColor";
+    importanceArea.innerHTML = "Unimportant";
     importanceButton.checked = false;
   };
   importanceButton.addEventListener('click', toggleImportance);
