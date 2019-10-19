@@ -15,6 +15,7 @@ if (localStorage.length >= 1) {
       showCard(item.title, item.body)
     });
   document.getElementById("firstButton").style.display = "none";
+
 };
 
 if (localStorage.length < 1) {
@@ -43,12 +44,14 @@ function saveDataClicked(evt) {
 
   var info = valueInput.value;
 
+  var importance = "unimportant";
+
   if (title == null || title == '') {
     window.location.href = '#promptpopup3';
   } else if (info == null || info == '') {
     window.location.href = '#promptpopup4';
   } else {
-    var memo = [info, dateNow, title, lastModify, firstCreated
+    var memo = [info, dateNow, title, lastModify, firstCreated, importance
     ];
 
     localStorage.setItem(key, JSON.stringify(memo));
@@ -148,6 +151,8 @@ function saveEdited(evt) {
 
   var key = evt.target.dataset.key;
 
+  var value = JSON.parse(localStorage.getItem(key));
+
   var firstCreated = evt.target.dataset.firstCreated;
 
   var titleInput = document.querySelector('#titleInput2');
@@ -164,13 +169,15 @@ function saveEdited(evt) {
 
   var info = valueInput.value;
 
+  importance = value[5];
+
   if (title == null || title == ''){
     window.location.href = '#promptpopup5';
   } else if (info == null || info == ''){
     window.location.href = '#promptpopup6';
   } else {
 
-    var memo = [info, dateNow, title, lastModify, firstCreated
+    var memo = [info, dateNow, title, lastModify, firstCreated, importance
     ];
 
     localStorage.setItem(key, JSON.stringify(memo));
@@ -203,7 +210,42 @@ function saveEdited(evt) {
     window.location.href = '';
 
   }
+};
 
+function toggleImportance(evt) {
+  var key = evt.target.dataset.key;
+
+  var importance = evt.target.dataset.imp;
+
+  var value = JSON.parse(localStorage.getItem(key));
+
+  var info = value[0];
+
+  var dateNow = value[1];
+
+  var title = value[2];
+
+  var lastModify = value[3];
+
+  var firstCreated = value[4];
+
+  var importance = value[5];
+
+  if (importance == "unimportant") {
+    importance = "important";
+
+    var memo = [info, dateNow, title, lastModify, firstCreated, importance
+    ];
+
+    localStorage.setItem(key, JSON.stringify(memo));
+  } else if (importance == "important") {
+    importance = "unimportant";
+    var memo = [info, dateNow, title, lastModify, firstCreated, importance
+    ];
+
+    localStorage.setItem(key, JSON.stringify(memo));
+  }
+  window.location.href = '';
 };
 
 function showCard(key, value) {
@@ -213,8 +255,8 @@ function showCard(key, value) {
   var card = document.createElement('div');
   card.className = "hpcard";
 
-  var cardHeading = document.createElement('h2');
-  cardHeading.className = "txt_center";
+  var cardHeading = document.createElement('div');
+  cardHeading.className = "hpHeadContainer";
   cardHeading.innerHTML = value[2];
 
   var cardContent = document.createElement('div');
@@ -231,6 +273,24 @@ function showCard(key, value) {
 
   /*var buttonCenter = document.createElement('center');*/
 
+  var importanceArea = document.createElement('p');
+
+  var importanceButton = document.createElement('input');
+  importanceButton.type = 'checkbox';
+  importanceButton.value = 'Important';
+  importanceButton.id = value[1];
+  importanceButton.dataset.key = key;
+  if (value[5] == "important"){
+    importanceArea.className = "importantBGColor";
+    importanceArea.innerHTML = "Important!";
+    importanceButton.checked = true;
+  }else if (value[5] == "unimportant"){
+    importanceArea.className = "unimportantBGColor";
+    importanceArea.innerHTML = "Unimportant";
+    importanceButton.checked = false;
+  };
+  importanceButton.addEventListener('click', toggleImportance);
+
   var deleteButton = document.createElement('button');
   deleteButton.className = 'hpbutton';
   deleteButton.innerHTML = 'Delete';
@@ -241,9 +301,9 @@ function showCard(key, value) {
   editButton.className = 'hpbutton';
   editButton.innerHTML = 'Edit';
   editButton.dataset.key = key;
+  editButton.dataset.imp = value[5];
   editButton.addEventListener('click', editClicked);
 
-  /*buttonCenter.appendChild(deleteButton)*/
 
   datePara.appendChild(cardDate);
   dateCreatedPara.appendChild(dateCreated);
@@ -251,15 +311,24 @@ function showCard(key, value) {
   cardContent.appendChild(dateCreatedPara);
   cardContent.appendChild(datePara);
 
+  importanceArea.appendChild(importanceButton);
+
   card.appendChild(cardHeading);
+  card.appendChild(importanceArea);
   card.appendChild(cardContent);
   card.appendChild(deleteButton);
   card.appendChild(editButton);
+
   col.appendChild(card);
 
-  document.querySelector('.outputTable').appendChild(col);
-  return col;
-}
+  if (value[5] == "important"){
+    document.querySelector('.importantTable').appendChild(col);
+    return col;
+  }else if (value[5] == "unimportant"){
+    document.querySelector('.outputTable').appendChild(col);
+    return col;
+  }
+};
 
 document.getElementById('saveBtn').addEventListener('click', saveDataClicked);
 document.getElementById('saveBtn2').addEventListener('click', saveEdited);
