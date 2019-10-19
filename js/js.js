@@ -241,7 +241,7 @@ function toggleImportance(evt) {
 
     localStorage.setItem(key, JSON.stringify(memo));
   }
-
+  window.location.href = '';
 };
 
 function showCard(key, value) {
@@ -315,9 +315,14 @@ function showCard(key, value) {
 
   col.appendChild(card);
 
-  document.querySelector('.outputTable').appendChild(col);
-  return col;
-}
+  if (value[5] == "important"){
+    document.querySelector('.importantTable').appendChild(col);
+    return col;
+  }else if (value[5] == "unimportant"){
+    document.querySelector('.outputTable').appendChild(col);
+    return col;
+  }
+};
 
 document.getElementById('saveBtn').addEventListener('click', saveDataClicked);
 document.getElementById('saveBtn2').addEventListener('click', saveEdited);
