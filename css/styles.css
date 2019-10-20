@@ -87,6 +87,17 @@ body a{
   font-weight: bold;
 }
 
+.hpDateContainer {
+  padding: 2px 15px;
+  background-color: lightyellow;
+  font-size:110%;
+  border-radius: 8px;
+  text-align: center;
+  overflow-wrap: break-word;
+  font-weight: bold;
+  margin: 10px;
+}
+
 .hpcontainer {
   padding: 2px 15px;
   background-color: lightyellow;
