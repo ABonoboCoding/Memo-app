@@ -34,7 +34,7 @@ function saveDataClicked(evt) {
 
   var lastModify = `${now}`;
 
-  var dateNow = `Last modified: ${now.getDate()}/${now.getMonth()+1}/${now.getYear()-100} at ${now.getHours()}:${now.getMinutes()}`;
+  var dateNow = `Last updated: ${now.getDate()}/${now.getMonth()+1}/${now.getYear()-100} at ${now.getHours()}:${now.getMinutes()}`;
 
   var titleInput = document.querySelector('#titleInput');
 
@@ -55,7 +55,7 @@ function saveDataClicked(evt) {
   } else if (info == null || info == '') {
     window.location.href = '#promptpopup4';
   } else {
-    var memo = [info, dateNow, title, lastModify, firstCreated, importance, dateCommplete
+    var memo = [info, dateNow, title, lastModify, firstCreated, importance, dateComplete
     ];
 
     localStorage.setItem(key, JSON.stringify(memo));
@@ -110,9 +110,28 @@ function loadDataClicked(evt) {
 }
 }
 */
+function promptDeletion(evt) {
+  evt.preventDefault();
+  window.location.href = '#popup7';
+  key = evt.target.dataset.key;
+
+  var confirmButton = document.querySelector('#confirmButton');
+  confirmButton.dataset.key = key;
+  confirmButton.addEventListener('click', deleteClicked)
+
+  var calcelButton = document.querySelector('#cancelButton');
+  cancelButton.addEventListener('click', cancelDelete);
+
+  console.log("finished");
+};
+
+function cancelDelete() {
+  window.location.href = '';
+};
 
 function deleteClicked(evt) {
   evt.preventDefault();
+
   localStorage.removeItem(evt.target.dataset.key);
   document.querySelector('.outputTable').innerHTML = '';
 
@@ -142,8 +161,10 @@ function editClicked(evt) {
   window.location.href = '#popup2';
   var title = document.querySelector("#titleInput2");
   var content = document.querySelector("#valueInput2");
+  var date = document.querySelector('#dateInput2');
   title.value = value[2];
   content.value = value[0];
+  date.value = value[6];
 
   var saveEditButton = document.querySelector("#saveBtn2");
   saveEditButton.dataset.key = key;
@@ -169,13 +190,13 @@ function saveEdited(evt) {
 
   var lastModify = `${now}`;
 
-  var dateNow = `Last modified: ${now.getDate()}/${now.getMonth()+1}/${now.getYear()-100} at ${now.getHours()}:${now.getMinutes()}`;
+  var dateNow = `Last updated: ${now.getDate()}/${now.getMonth()+1}/${now.getYear()-100} at ${now.getHours()}:${now.getMinutes()}`;
 
   var title = titleInput.value;
 
   var info = valueInput.value;
 
-  dateComplete = value[6];
+  var dateComplete = dateInput.value;
 
   importance = value[5];
 
@@ -301,11 +322,14 @@ function showCard(key, value) {
   };
   importanceButton.addEventListener('click', toggleImportance);
 
+  var cardDateComplete = document.createElement('div');
+  cardDateComplete.className = "hpDateContainer";
+
   var deleteButton = document.createElement('button');
   deleteButton.className = 'hpbutton';
   deleteButton.innerHTML = 'Delete';
   deleteButton.dataset.key = key;
-  deleteButton.addEventListener('click', deleteClicked);
+  deleteButton.addEventListener('click', promptDeletion);
 
   var editButton = document.createElement('button');
   editButton.className = 'hpbutton';
@@ -325,6 +349,12 @@ function showCard(key, value) {
 
   card.appendChild(cardHeading);
   card.appendChild(importanceArea);
+  if (value[6] == "" || value[6] == null){
+
+  }else{
+    cardDateComplete.innerHTML = `To be completed at: ${value[6]}`;
+    card.appendChild(cardDateComplete);
+  }
   card.appendChild(cardContent);
   card.appendChild(deleteButton);
   card.appendChild(editButton);
