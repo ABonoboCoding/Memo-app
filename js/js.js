@@ -1,5 +1,4 @@
 if (localStorage.length >= 1) {
-
   document.querySelector('.outputTable').innerHTML = '';
 
   const memos = [];
@@ -14,6 +13,7 @@ if (localStorage.length >= 1) {
   memos.sort((a, b) => a.body[3] < b.body[3]).forEach((item) => {
       showCard(item.title, item.body)
     });
+    
   document.getElementById("firstButton").style.display = "none";
 
 };
