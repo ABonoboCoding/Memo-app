@@ -175,9 +175,9 @@ function saveEdited(evt) {
 
   var info = valueInput.value;
 
-  importance = value[5];
+  dateComplete = value[6];
 
-  date
+  importance = value[5];
 
   if (title == null || title == ''){
     window.location.href = '#promptpopup5';
@@ -239,16 +239,18 @@ function toggleImportance(evt) {
 
   var importance = value[5];
 
+  var dateComplete = value[6];
+
   if (importance == "unimportant") {
     importance = "important";
 
-    var memo = [info, dateNow, title, lastModify, firstCreated, importance
+    var memo = [info, dateNow, title, lastModify, firstCreated, importance, dateComplete
     ];
 
     localStorage.setItem(key, JSON.stringify(memo));
   } else if (importance == "important") {
     importance = "unimportant";
-    var memo = [info, dateNow, title, lastModify, firstCreated, importance
+    var memo = [info, dateNow, title, lastModify, firstCreated, importance, dateComplete
     ];
 
     localStorage.setItem(key, JSON.stringify(memo));
