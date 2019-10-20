@@ -13,7 +13,7 @@ if (localStorage.length >= 1) {
   memos.sort((a, b) => a.body[3] < b.body[3]).forEach((item) => {
       showCard(item.title, item.body)
     });
-    
+
   document.getElementById("firstButton").style.display = "none";
 
 };
@@ -40,9 +40,13 @@ function saveDataClicked(evt) {
 
   var valueInput = document.querySelector('#valueInput');
 
+  var dateInput = document.querySelector('#dateInput')
+
   var title = titleInput.value;
 
   var info = valueInput.value;
+
+  var dateComplete = dateInput.value;
 
   var importance = "unimportant";
 
@@ -51,7 +55,7 @@ function saveDataClicked(evt) {
   } else if (info == null || info == '') {
     window.location.href = '#promptpopup4';
   } else {
-    var memo = [info, dateNow, title, lastModify, firstCreated, importance
+    var memo = [info, dateNow, title, lastModify, firstCreated, importance, dateCommplete
     ];
 
     localStorage.setItem(key, JSON.stringify(memo));
@@ -159,6 +163,8 @@ function saveEdited(evt) {
 
   var valueInput = document.querySelector('#valueInput2');
 
+  var dateInput = document.querySelector('#dateInput2');
+
   var now = new Date();
 
   var lastModify = `${now}`;
@@ -171,13 +177,15 @@ function saveEdited(evt) {
 
   importance = value[5];
 
+  date
+
   if (title == null || title == ''){
     window.location.href = '#promptpopup5';
   } else if (info == null || info == ''){
     window.location.href = '#promptpopup6';
   } else {
 
-    var memo = [info, dateNow, title, lastModify, firstCreated, importance
+    var memo = [info, dateNow, title, lastModify, firstCreated, importance, dateComplete
     ];
 
     localStorage.setItem(key, JSON.stringify(memo));
