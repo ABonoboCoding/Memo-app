@@ -37,12 +37,12 @@
 }
 
 .importantBGColor{
-  background-color: lightgreen;
+  background-color: yellow;
   border-radius: 8px;
 }
 
 .unimportantBGColor{
-  background-color: lightyellow;
+  background-color: white;
   border-radius: 8px;
 }
 
@@ -58,11 +58,11 @@ body a{
   height: 100%;
   border-radius: 15px;
   border-style: solid;
-  border-color: lightblue;
+  border-color: grey;
   max-width: 275px; /*change minimum size of card */
   max-height: auto;
   min-width: 175px;
-  background-color: lightblue;
+  background-color: lightgrey;
   padding: 5px;
   margin: 5px;
 }
@@ -70,7 +70,7 @@ body a{
 .hpHeading {
   text-align: center;
   padding: 2px 15px;
-  background-color: lightyellow;
+  background-color: white;
   font-size:110%;
   border-radius: 8px;
   text-align: left;
@@ -79,7 +79,7 @@ body a{
 
 .hpHeadContainer {
   padding: 2px 15px;
-  background-color: lightyellow;
+  background-color: white;
   font-size:110%;
   border-radius: 8px;
   text-align: center;
@@ -89,7 +89,7 @@ body a{
 
 .hpDateContainer {
   padding: 2px 15px;
-  background-color: lightyellow;
+  background-color: white;
   font-size:110%;
   border-radius: 8px;
   text-align: center;
@@ -100,7 +100,7 @@ body a{
 
 .hpcontainer {
   padding: 2px 15px;
-  background-color: lightyellow;
+  background-color: white;
   font-size:110%;
   border-radius: 8px;
   text-align: left;
@@ -110,10 +110,10 @@ body a{
 }
 
 .hpbutton {
-  background-color: green;
+  background-color: white;
   display: inline-flex;
-  border: none;
-  color: white;
+  border: 5px solid;
+  color: black;
   padding: 10px 10px;
   text-align: center;
   text-decoration: none;
@@ -122,14 +122,32 @@ body a{
   transition-duration: 0.4s;
   cursor: pointer;
   width:30%;
-  border-radius: 8px;
+  border-color: lightgrey;
+  border-radius: 12px;
+}
+
+.hpbutton:hover {
+  background-color: lightgrey;
+  display: inline-flex;
+  border: 5px solid;
+  color: black;
+  padding: 10px 10px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  width:30%;
+  border-color: lightgrey;
+  border-radius: 12px;
 }
 
 .createFirstButton {
-  background-color: lightgreen;
+  background-color: white;
   display: inline-flex;
-  border: none;
-  color: white;
+  border: 5px solid;
+  color: black;
   padding: 16px 24px;
   text-align: center;
   text-decoration: none;
@@ -138,14 +156,15 @@ body a{
   transition-duration: 0.4s;
   cursor: pointer;
   max-width: 350px;
+  border-color: lightgrey;
   border-radius: 12px;
   height: 400px;
 }
 
 .createFirstButton:hover {
-  background-color: lightgreen;
+  background-color: lightgrey;
   display: inline-flex;
-  border: none;
+  border:  5px solid;
   color: black;
   padding: 16px 32px;
   text-align: center;
@@ -161,6 +180,7 @@ body a{
 
 .hpbuttonGreen {
   background-color: white;
+  border:
   color: black;
   border: 1px solid lightblue;
 }
@@ -179,7 +199,7 @@ input[type=text], select {
   padding: 12px 20px;
   margin: 8px 0;
   display: inline-block;
-  border: 1px solid #ccc;
+  border: 5px solid lightgrey;
   border-radius: 4px;
   box-sizing: border-box;
 }
@@ -188,12 +208,16 @@ input[type=text]:focus {
   border: 3px solid #555;
 }
 
+input[type=date] {
+  border: 5px solid lightgrey;
+}
+
 textarea[type=text], select {
   width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
   display: inline-block;
-  border: 1px solid #ccc;
+  border: 5px solid lightgrey;
   border-radius: 4px;
   box-sizing: border-box;
 }
@@ -204,17 +228,17 @@ textarea[type=text]:focus {
 
 button[type=submit] {
   width: 100%;
-  background-color: #4CAF50;
-  color: white;
+  background-color: white;
+  color: black;
   padding: 14px 20px;
   margin: 8px 0;
-  border: none;
+  border: 5px solid lightgrey;
   border-radius: 4px;
   cursor: pointer;
 }
 
 button[type=submit]:hover {
-  background-color: #45a049;
+  background-color: lightgrey;
 }
 
 .overlay {
