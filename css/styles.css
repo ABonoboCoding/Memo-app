@@ -105,6 +105,8 @@ body a{
   border-radius: 8px;
   text-align: left;
   overflow-wrap: break-word;
+  white-space: pre-line;
+  white-space: pre-wrap;
 }
 
 .hpbutton {
